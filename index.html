@@ -1,7 +1,47 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>지렁이 게임</title>
+    <style>
+        #game-board {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <h1>지렁이 게임</h1>
+    <div id="game-board"></div>
+
+    <script>
+        var gameBoard = document.getElementById('game-board');
+        var dot = document.createElement('div');
+        dot.className = 'dot';
+
+        // 지렁이 움직임을 처리하는 함수
+        function moveDot(event) {
+            var x = event.clientX - gameBoard.offsetLeft;
+            var y = event.clientY - gameBoard.offsetTop;
+
+            dot.style.left = x + 'px';
+            dot.style.top = y + 'px';
+        }
+
+        // 게임 보드에 마우스 이동 이벤트를 추가
+        gameBoard.addEventListener('mousemove', moveDot);
+
+        // 게임 보드에 지렁이(dot) 추가
+        gameBoard.appendChild(dot);
+    </script>
 </body>
 </html>
